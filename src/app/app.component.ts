@@ -35,14 +35,6 @@ export class AppComponent {
     todo.editing = true;
   }
 
-  removeCompleted() {
-    this.todoStore.removeCompleted();
-  }
-
-  toggleCompletion(todo: Todo) {
-    this.todoStore.toggleCompletion(todo);
-  }
-
   remove(todo: Todo) {
     this.todoStore.remove(todo);
   }
@@ -53,5 +45,4 @@ export class AppComponent {
       this.newTodoText = '';
     }
   }
-
 }

@@ -10,6 +10,7 @@ export class TodoService {
 
   todos: Array<Todo>;
   urlAPI = 'https://pacific-sea-93717.herokuapp.com/note';
+  // urlAPI = 'http://localhost:8080/note';
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type':  'application/json'
@@ -32,34 +33,8 @@ export class TodoService {
     );
   }
 
-  private getWithCompleted(completed: Boolean) {
-    return this.todos.filter((todo: Todo) => todo.completed === completed);
-  }
-
-  allCompleted() {
-    return this.todos.length === this.getCompleted().length;
-  }
-
   setAllTo(completed: Boolean) {
     this.todos.forEach((t: Todo) => t.completed = completed);
-    this.updateNotes();
-  }
-
-  removeCompleted() {
-    this.todos = this.getWithCompleted(false);
-    this.updateNotes();
-  }
-
-  getRemaining() {
-    return this.getWithCompleted(false);
-}
-
-  getCompleted() {
-    return this.getWithCompleted(true);
-  }
-
-  toggleCompletion(todo: Todo) {
-    todo.completed = !todo.completed;
     this.updateNotes();
   }
 
